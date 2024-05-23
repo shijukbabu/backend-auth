@@ -1,0 +1,32 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: backend-auth
+  datasource:
+    url: jdbc:postgresql://localhost:5432/backend-auth
+    username: postgres
+    password: AdminKey123
+   
+  jpa:
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      platform: postgres
+      mode: always
+      schema-locations:
+      - classpath:db/schema.sql 
+
+  jackson:
+    default-property-inclusion: non-null
+
+  security:
+    oauth2:
+      authorizationserver:
+        issuer: http://auth-server:8081
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
